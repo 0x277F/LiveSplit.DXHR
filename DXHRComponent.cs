@@ -92,34 +92,22 @@ namespace LiveSplit.DXHR
 
         void gameMemory_OnSplitCompleted(object sender, GameMemory.SplitArea split, uint frame)
         {
-            Debug.WriteLineIf(split != GameMemory.SplitArea.None, String.Format("[NoLoads] Trying to split {0} with {1} template, State: {2} - {3}", split, this.Settings.AnyPercentTemplate, _gameMemory.splitStates[(int)split], frame));
+            Debug.WriteLineIf(split != GameMemory.SplitArea.None, String.Format("[NoLoads] Trying to split {0}, State: {1} - {2}", split, _gameMemory.splitStates[(int)split], frame));
             if (_state.CurrentPhase == TimerPhase.Running && !_gameMemory.splitStates[(int)split] &&
-                ((split == GameMemory.SplitArea.Helgen && this.Settings.Helgen) ||
-                (split == GameMemory.SplitArea.Whiterun && this.Settings.Whiterun) ||
-                (split == GameMemory.SplitArea.ThalmorEmbassy && this.Settings.ThalmorEmbassy) ||
-                (split == GameMemory.SplitArea.Esbern && this.Settings.Esbern) ||
-                (split == GameMemory.SplitArea.Riverwood && this.Settings.Riverwood) ||
-                (split == GameMemory.SplitArea.TheWall && this.Settings.TheWall) ||
-                (split == GameMemory.SplitArea.Septimus && this.Settings.Septimus) ||
-                (split == GameMemory.SplitArea.MzarkTower && this.Settings.MzarkTower) ||
-                (split == GameMemory.SplitArea.ClearSky && this.Settings.ClearSky) ||
-                (split == GameMemory.SplitArea.HorseClimb && this.Settings.HorseClimb) ||
-                (split == GameMemory.SplitArea.CutsceneEnd && this.Settings.CutsceneEnd) ||
-                (split == GameMemory.SplitArea.CutsceneStart && this.Settings.CutsceneStart) ||
-                (split == GameMemory.SplitArea.Alduin1 && this.Settings.Alduin1) ||
-                (split == GameMemory.SplitArea.HighHrothgar && this.Settings.HighHrothgar) ||
-                (split == GameMemory.SplitArea.Solitude && this.Settings.Solitude) ||
-                (split == GameMemory.SplitArea.Windhelm && this.Settings.Windhelm) ||
-                (split == GameMemory.SplitArea.Council && this.Settings.Council) ||
-                (split == GameMemory.SplitArea.Odahviing && this.Settings.Odahviing) ||
-                (split == GameMemory.SplitArea.EnterSovngarde && this.Settings.EnterSovngarde) ||
-                (split == GameMemory.SplitArea.CollegeOfWinterholdQuestlineCompleted && this.Settings.CollegeOfWinterhold) ||
-                (split == GameMemory.SplitArea.CompanionsQuestlineCompleted && this.Settings.Companions) ||
-                (split == GameMemory.SplitArea.DarkBrotherhoodQuestlineCompleted && this.Settings.DarkBrotherhood) ||
-                (split == GameMemory.SplitArea.ThievesGuildQuestlineCompleted && this.Settings.ThievesGuild) ||
-                (split == GameMemory.SplitArea.AlduinDefeated && this.Settings.AlduinDefeated)))
+                ((split == GameMemory.SplitArea.Prologue && this.Settings.Prologue) ||
+                (split == GameMemory.SplitArea.Sarif && this.Settings.Sarif) ||
+                (split == GameMemory.SplitArea.Detroit1 && this.Settings.Detroit1) ||
+                (split == GameMemory.SplitArea.FEMA && this.Settings.FEMA) ||
+                (split == GameMemory.SplitArea.Hengsha1 && this.Settings.Hengsha1) ||
+                (split == GameMemory.SplitArea.TaiYong1 && this.Settings.TaiYong1) ||
+                (split == GameMemory.SplitArea.TaiYong2 && this.Settings.TaiYong2) ||
+                (split == GameMemory.SplitArea.Picus && this.Settings.Picus) ||
+                (split == GameMemory.SplitArea.Detroit2 && this.Settings.Detroit2) ||
+                (split == GameMemory.SplitArea.Hengsha2 && this.Settings.Hengsha2) ||
+                (split == GameMemory.SplitArea.Singapore && this.Settings.Singapore) ||
+                (split == GameMemory.SplitArea.Panchaea && this.Settings.Panchaea)))
             {
-                Trace.WriteLine(String.Format("[NoLoads] {0} Split with {2} template - {1}", split, frame, this.Settings.AnyPercentTemplate));
+                Trace.WriteLine(String.Format("[NoLoads] {0} Split - {1}", split, frame));
                 _timer.Split();
                 _gameMemory.splitStates[(int)split] = true;
             }

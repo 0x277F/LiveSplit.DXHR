@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="18">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"Is Loading"</Description>
+      <LastState Value="0" Activated="0" RealAddress="02566708"/>
+      <Color>80000008</Color>
+      <VariableType>Byte</VariableType>
+      <Address>dxhr.exe+1876708</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>4</ID>
+      <Description>"Is Loading 2"</Description>
+      <LastState Value="0" Activated="0" RealAddress="02545800"/>
+      <Color>80000008</Color>
+      <VariableType>Byte</VariableType>
+      <Address>dxhr.exe+1855800</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"Stream Group ID"</Description>
+      <LastState Activated="0" RealAddress="02528D30"/>
+      <Color>80000008</Color>
+      <VariableType>String</VariableType>
+      <Length>55</Length>
+      <Unicode>0</Unicode>
+      <ZeroTerminate>1</ZeroTerminate>
+      <Address>dxhr.exe+1838D30</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10</ID>
+      <Description>"Stream Group ID"</Description>
+      <LastState Activated="0" RealAddress="02547924"/>
+      <Color>80000008</Color>
+      <VariableType>String</VariableType>
+      <Length>55</Length>
+      <Unicode>0</Unicode>
+      <ZeroTerminate>1</ZeroTerminate>
+      <Address>dxhr.exe+1857924</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2</ID>
+      <Description>"In-Game Time"</Description>
+      <LastState Value="3573" Activated="0" RealAddress="016D7744"/>
+      <Color>80000008</Color>
+      <VariableType>4 Bytes</VariableType>
+      <Address>dxhr.exe+9E7744</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"Cutscene ID"</Description>
+      <LastState Value="0" Activated="0" RealAddress="027BE2C0"/>
+      <Color>80000008</Color>
+      <VariableType>4 Bytes</VariableType>
+      <Address>dxhr.exe+1ACE2C0</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>
