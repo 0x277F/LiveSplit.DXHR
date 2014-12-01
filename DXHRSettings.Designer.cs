@@ -53,9 +53,9 @@
             this.gbEndSplits.SuspendLayout();
             this.tlpEndSplits.SuspendLayout();
             this.SuspendLayout();
-            // 
+            //
             // tlpMain
-            // 
+            //
             this.tlpMain.AutoSize = true;
             this.tlpMain.ColumnCount = 1;
             this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -71,9 +71,9 @@
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tlpMain.Size = new System.Drawing.Size(476, 342);
             this.tlpMain.TabIndex = 0;
-            // 
+            //
             // gbStartSplits
-            // 
+            //
             this.gbStartSplits.AutoSize = true;
             this.gbStartSplits.Controls.Add(this.tlpStartSplits);
             this.gbStartSplits.Dock = System.Windows.Forms.DockStyle.Top;
@@ -83,9 +83,9 @@
             this.gbStartSplits.TabIndex = 5;
             this.gbStartSplits.TabStop = false;
             this.gbStartSplits.Text = "Start Auto-splits";
-            // 
+            //
             // tlpStartSplits
-            // 
+            //
             this.tlpStartSplits.AutoSize = true;
             this.tlpStartSplits.BackColor = System.Drawing.Color.Transparent;
             this.tlpStartSplits.ColumnCount = 1;
@@ -100,9 +100,9 @@
             this.tlpStartSplits.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpStartSplits.Size = new System.Drawing.Size(464, 46);
             this.tlpStartSplits.TabIndex = 4;
-            // 
+            //
             // chkAutoReset
-            // 
+            //
             this.chkAutoReset.AutoSize = true;
             this.chkAutoReset.Checked = true;
             this.chkAutoReset.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -112,9 +112,9 @@
             this.chkAutoReset.TabIndex = 4;
             this.chkAutoReset.Text = "Reset";
             this.chkAutoReset.UseVisualStyleBackColor = true;
-            // 
+            //
             // gbEndSplits
-            // 
+            //
             this.gbEndSplits.AutoSize = true;
             this.gbEndSplits.Controls.Add(this.tlpEndSplits);
             this.gbEndSplits.Dock = System.Windows.Forms.DockStyle.Top;
@@ -124,9 +124,9 @@
             this.gbEndSplits.TabIndex = 7;
             this.gbEndSplits.TabStop = false;
             this.gbEndSplits.Text = "Any% Auto-splits";
-            // 
+            //
             // tlpEndSplits
-            // 
+            //
             this.tlpEndSplits.AutoSize = true;
             this.tlpEndSplits.BackColor = System.Drawing.Color.Transparent;
             this.tlpEndSplits.ColumnCount = 1;
@@ -164,9 +164,9 @@
             this.tlpEndSplits.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tlpEndSplits.Size = new System.Drawing.Size(464, 246);
             this.tlpEndSplits.TabIndex = 4;
-            // 
+            //
             // chkPrologue
-            // 
+            //
             this.chkPrologue.AutoSize = true;
             this.chkPrologue.Checked = true;
             this.chkPrologue.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -176,9 +176,9 @@
             this.chkPrologue.TabIndex = 7;
             this.chkPrologue.Text = "Prologue";
             this.chkPrologue.UseVisualStyleBackColor = true;
-            // 
+            //
             // chkSarif
-            // 
+            //
             this.chkSarif.AutoSize = true;
             this.chkSarif.Checked = true;
             this.chkSarif.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -188,9 +188,9 @@
             this.chkSarif.TabIndex = 6;
             this.chkSarif.Text = "Sarif";
             this.chkSarif.UseVisualStyleBackColor = true;
-            // 
+            //
             // chkDetroit1
-            // 
+            //
             this.chkDetroit1.AutoSize = true;
             this.chkDetroit1.Checked = true;
             this.chkDetroit1.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -201,9 +201,9 @@
             this.chkDetroit1.TabIndex = 8;
             this.chkDetroit1.Text = "Detroit 1";
             this.chkDetroit1.UseVisualStyleBackColor = true;
-            // 
+            //
             // chkFEMA
-            // 
+            //
             this.chkFEMA.AutoSize = true;
             this.chkFEMA.Checked = true;
             this.chkFEMA.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -214,9 +214,9 @@
             this.chkFEMA.TabIndex = 9;
             this.chkFEMA.Text = "FEMA";
             this.chkFEMA.UseVisualStyleBackColor = true;
-            // 
+            //
             // chkHengsha1
-            // 
+            //
             this.chkHengsha1.AutoSize = true;
             this.chkHengsha1.Checked = true;
             this.chkHengsha1.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -227,9 +227,9 @@
             this.chkHengsha1.TabIndex = 10;
             this.chkHengsha1.Text = "Hengsha 1";
             this.chkHengsha1.UseVisualStyleBackColor = true;
-            // 
+            //
             // chkTaiYong1
-            // 
+            //
             this.chkTaiYong1.AutoSize = true;
             this.chkTaiYong1.Checked = true;
             this.chkTaiYong1.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -240,9 +240,9 @@
             this.chkTaiYong1.TabIndex = 11;
             this.chkTaiYong1.Text = "Tai Yong Lower";
             this.chkTaiYong1.UseVisualStyleBackColor = true;
-            // 
+            //
             // chkTaiYong2
-            // 
+            //
             this.chkTaiYong2.AutoSize = true;
             this.chkTaiYong2.Checked = true;
             this.chkTaiYong2.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -253,9 +253,9 @@
             this.chkTaiYong2.TabIndex = 12;
             this.chkTaiYong2.Text = "Tai Yong Upper";
             this.chkTaiYong2.UseVisualStyleBackColor = true;
-            // 
+            //
             // chkPicus
-            // 
+            //
             this.chkPicus.AutoSize = true;
             this.chkPicus.Checked = true;
             this.chkPicus.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -266,9 +266,9 @@
             this.chkPicus.TabIndex = 13;
             this.chkPicus.Text = "Picus";
             this.chkPicus.UseVisualStyleBackColor = true;
-            // 
+            //
             // chkDetroit2
-            // 
+            //
             this.chkDetroit2.AutoSize = true;
             this.chkDetroit2.Checked = true;
             this.chkDetroit2.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -279,9 +279,9 @@
             this.chkDetroit2.TabIndex = 5;
             this.chkDetroit2.Text = "Detroit 2";
             this.chkDetroit2.UseVisualStyleBackColor = true;
-            // 
+            //
             // chkHengsha2
-            // 
+            //
             this.chkHengsha2.AutoSize = true;
             this.chkHengsha2.Checked = true;
             this.chkHengsha2.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -292,9 +292,9 @@
             this.chkHengsha2.TabIndex = 12;
             this.chkHengsha2.Text = "Hengsha 2";
             this.chkHengsha2.UseVisualStyleBackColor = true;
-            // 
+            //
             // chkSingapore
-            // 
+            //
             this.chkSingapore.AutoSize = true;
             this.chkSingapore.Checked = true;
             this.chkSingapore.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -305,9 +305,9 @@
             this.chkSingapore.TabIndex = 12;
             this.chkSingapore.Text = "Singapore";
             this.chkSingapore.UseVisualStyleBackColor = true;
-            // 
+            //
             // chkPanchaea
-            // 
+            //
             this.chkPanchaea.Checked = true;
             this.chkPanchaea.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkPanchaea.Location = new System.Drawing.Point(3, 229);
@@ -317,9 +317,9 @@
             this.chkPanchaea.TabIndex = 12;
             this.chkPanchaea.Text = "Panchaea";
             this.chkPanchaea.UseVisualStyleBackColor = true;
-            // 
+            //
             // chkAutoStart
-            // 
+            //
             this.chkAutoStart.AutoSize = true;
             this.chkAutoStart.Checked = true;
             this.chkAutoStart.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -329,9 +329,9 @@
             this.chkAutoStart.TabIndex = 5;
             this.chkAutoStart.Text = "Start";
             this.chkAutoStart.UseVisualStyleBackColor = true;
-            // 
+            //
             // DXHRSettings
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tlpMain);
