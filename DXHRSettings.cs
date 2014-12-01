@@ -7,6 +7,7 @@ namespace LiveSplit.DXHR
 {
     public partial class DXHRSettings : UserControl
     {
+        public bool AutoReset { get; set; }
         public bool AutoStart { get; set; }
         public bool Prologue { get; set; }
         public bool Sarif { get; set; }
@@ -21,6 +22,7 @@ namespace LiveSplit.DXHR
         public bool Singapore { get; set; }
         public bool Panchaea { get; set; }
 
+        private const bool DEFAULT_AUTORESET = true;
         private const bool DEFAULT_AUTOSTART = true;
         private const bool DEFAULT_PROLOGUE = false;
         private const bool DEFAULT_SARIF = false;
@@ -39,6 +41,8 @@ namespace LiveSplit.DXHR
         {
             InitializeComponent();
 
+            this.chkAutoReset.DataBindings.Add("Checked", this, "AutoReset", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.chkAutoStart.DataBindings.Add("Checked", this, "AutoStart", false, DataSourceUpdateMode.OnPropertyChanged);
             this.chkPrologue.DataBindings.Add("Checked", this, "Prologue", false, DataSourceUpdateMode.OnPropertyChanged);
             this.chkSarif.DataBindings.Add("Checked", this, "Sarif", false, DataSourceUpdateMode.OnPropertyChanged);
             this.chkFEMA.DataBindings.Add("Checked", this, "FEMA", false, DataSourceUpdateMode.OnPropertyChanged);
@@ -53,6 +57,7 @@ namespace LiveSplit.DXHR
             this.chkPanchaea.DataBindings.Add("Checked", this, "Panchaea", false, DataSourceUpdateMode.OnPropertyChanged);
 
             // defaults
+            this.AutoReset = DEFAULT_AUTORESET;
             this.AutoStart = DEFAULT_AUTOSTART;
             this.Prologue = DEFAULT_PROLOGUE;
             this.Sarif = DEFAULT_SARIF;
@@ -74,6 +79,7 @@ namespace LiveSplit.DXHR
 
             settingsNode.AppendChild(ToElement(doc, "Version", Assembly.GetExecutingAssembly().GetName().Version.ToString(3)));
 
+            settingsNode.AppendChild(ToElement(doc, "AutoReset", this.AutoReset));
             settingsNode.AppendChild(ToElement(doc, "AutoStart", this.AutoStart));
             settingsNode.AppendChild(ToElement(doc, "Prologue", this.Prologue));
             settingsNode.AppendChild(ToElement(doc, "Sarif", this.Sarif));
@@ -93,6 +99,7 @@ namespace LiveSplit.DXHR
 
         public void SetSettings(XmlNode settings)
         {
+            this.AutoReset = ParseBool(settings, "AutoReset", DEFAULT_AUTORESET);
             this.AutoStart = ParseBool(settings, "AutoStart", DEFAULT_AUTOSTART);
             this.Prologue = ParseBool(settings, "Prologue", DEFAULT_PROLOGUE);
             this.Sarif = ParseBool(settings, "Sarif", DEFAULT_SARIF);

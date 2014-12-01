@@ -31,7 +31,7 @@
             this.tlpMain = new System.Windows.Forms.TableLayoutPanel();
             this.gbStartSplits = new System.Windows.Forms.GroupBox();
             this.tlpStartSplits = new System.Windows.Forms.TableLayoutPanel();
-            this.chkAutoStart = new System.Windows.Forms.CheckBox();
+            this.chkAutoReset = new System.Windows.Forms.CheckBox();
             this.gbEndSplits = new System.Windows.Forms.GroupBox();
             this.tlpEndSplits = new System.Windows.Forms.TableLayoutPanel();
             this.chkPrologue = new System.Windows.Forms.CheckBox();
@@ -46,6 +46,7 @@
             this.chkHengsha2 = new System.Windows.Forms.CheckBox();
             this.chkSingapore = new System.Windows.Forms.CheckBox();
             this.chkPanchaea = new System.Windows.Forms.CheckBox();
+            this.chkAutoStart = new System.Windows.Forms.CheckBox();
             this.tlpMain.SuspendLayout();
             this.gbStartSplits.SuspendLayout();
             this.tlpStartSplits.SuspendLayout();
@@ -55,6 +56,7 @@
             // 
             // tlpMain
             // 
+            this.tlpMain.AutoSize = true;
             this.tlpMain.ColumnCount = 1;
             this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpMain.Controls.Add(this.gbStartSplits, 0, 0);
@@ -67,7 +69,7 @@
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpMain.Size = new System.Drawing.Size(476, 309);
+            this.tlpMain.Size = new System.Drawing.Size(476, 342);
             this.tlpMain.TabIndex = 0;
             // 
             // gbStartSplits
@@ -77,7 +79,7 @@
             this.gbStartSplits.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbStartSplits.Location = new System.Drawing.Point(3, 3);
             this.gbStartSplits.Name = "gbStartSplits";
-            this.gbStartSplits.Size = new System.Drawing.Size(470, 42);
+            this.gbStartSplits.Size = new System.Drawing.Size(470, 65);
             this.gbStartSplits.TabIndex = 5;
             this.gbStartSplits.TabStop = false;
             this.gbStartSplits.Text = "Start Auto-splits";
@@ -88,36 +90,37 @@
             this.tlpStartSplits.BackColor = System.Drawing.Color.Transparent;
             this.tlpStartSplits.ColumnCount = 1;
             this.tlpStartSplits.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpStartSplits.Controls.Add(this.chkAutoStart, 0, 0);
+            this.tlpStartSplits.Controls.Add(this.chkAutoStart, 0, 1);
+            this.tlpStartSplits.Controls.Add(this.chkAutoReset, 0, 0);
             this.tlpStartSplits.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpStartSplits.Location = new System.Drawing.Point(3, 16);
             this.tlpStartSplits.Name = "tlpStartSplits";
             this.tlpStartSplits.RowCount = 2;
             this.tlpStartSplits.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpStartSplits.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpStartSplits.Size = new System.Drawing.Size(464, 23);
+            this.tlpStartSplits.Size = new System.Drawing.Size(464, 46);
             this.tlpStartSplits.TabIndex = 4;
             // 
-            // chkAutoStart
+            // chkAutoReset
             // 
-            this.chkAutoStart.AutoSize = true;
-            this.chkAutoStart.Checked = true;
-            this.chkAutoStart.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkAutoStart.Location = new System.Drawing.Point(3, 3);
-            this.chkAutoStart.Name = "chkAutoStart";
-            this.chkAutoStart.Size = new System.Drawing.Size(87, 17);
-            this.chkAutoStart.TabIndex = 4;
-            this.chkAutoStart.Text = "Start / Reset";
-            this.chkAutoStart.UseVisualStyleBackColor = true;
+            this.chkAutoReset.AutoSize = true;
+            this.chkAutoReset.Checked = true;
+            this.chkAutoReset.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkAutoReset.Location = new System.Drawing.Point(3, 3);
+            this.chkAutoReset.Name = "chkAutoReset";
+            this.chkAutoReset.Size = new System.Drawing.Size(54, 17);
+            this.chkAutoReset.TabIndex = 4;
+            this.chkAutoReset.Text = "Reset";
+            this.chkAutoReset.UseVisualStyleBackColor = true;
             // 
             // gbEndSplits
             // 
             this.gbEndSplits.AutoSize = true;
             this.gbEndSplits.Controls.Add(this.tlpEndSplits);
             this.gbEndSplits.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbEndSplits.Location = new System.Drawing.Point(3, 51);
+            this.gbEndSplits.Location = new System.Drawing.Point(3, 74);
             this.gbEndSplits.Name = "gbEndSplits";
-            this.gbEndSplits.Size = new System.Drawing.Size(470, 295);
+            this.gbEndSplits.Size = new System.Drawing.Size(470, 265);
             this.gbEndSplits.TabIndex = 7;
             this.gbEndSplits.TabStop = false;
             this.gbEndSplits.Text = "Any% Auto-splits";
@@ -133,16 +136,15 @@
             this.tlpEndSplits.Controls.Add(this.chkDetroit1, 0, 5);
             this.tlpEndSplits.Controls.Add(this.chkFEMA, 0, 6);
             this.tlpEndSplits.Controls.Add(this.chkHengsha1, 0, 7);
-            this.tlpEndSplits.Controls.Add(this.chkTaiYong1, 0, 7);
-            this.tlpEndSplits.Controls.Add(this.chkTaiYong2, 0, 8);
             this.tlpEndSplits.Controls.Add(this.chkPicus, 0, 10);
             this.tlpEndSplits.Controls.Add(this.chkDetroit2, 0, 11);
             this.tlpEndSplits.Controls.Add(this.chkHengsha2, 0, 12);
             this.tlpEndSplits.Controls.Add(this.chkSingapore, 0, 13);
             this.tlpEndSplits.Controls.Add(this.chkPanchaea, 0, 14);
+            this.tlpEndSplits.Controls.Add(this.chkTaiYong1, 0, 8);
+            this.tlpEndSplits.Controls.Add(this.chkTaiYong2, 0, 9);
             this.tlpEndSplits.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpEndSplits.Location = new System.Drawing.Point(3, 16);
-            this.tlpEndSplits.MinimumSize = new System.Drawing.Size(0, 276);
             this.tlpEndSplits.Name = "tlpEndSplits";
             this.tlpEndSplits.RowCount = 11;
             this.tlpEndSplits.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -160,7 +162,7 @@
             this.tlpEndSplits.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tlpEndSplits.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tlpEndSplits.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpEndSplits.Size = new System.Drawing.Size(464, 276);
+            this.tlpEndSplits.Size = new System.Drawing.Size(464, 246);
             this.tlpEndSplits.TabIndex = 4;
             // 
             // chkPrologue
@@ -218,7 +220,7 @@
             this.chkHengsha1.AutoSize = true;
             this.chkHengsha1.Checked = true;
             this.chkHengsha1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkHengsha1.Location = new System.Drawing.Point(3, 109);
+            this.chkHengsha1.Location = new System.Drawing.Point(3, 89);
             this.chkHengsha1.MinimumSize = new System.Drawing.Size(0, 17);
             this.chkHengsha1.Name = "chkHengsha1";
             this.chkHengsha1.Size = new System.Drawing.Size(78, 17);
@@ -231,7 +233,7 @@
             this.chkTaiYong1.AutoSize = true;
             this.chkTaiYong1.Checked = true;
             this.chkTaiYong1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkTaiYong1.Location = new System.Drawing.Point(3, 89);
+            this.chkTaiYong1.Location = new System.Drawing.Point(3, 109);
             this.chkTaiYong1.MinimumSize = new System.Drawing.Size(0, 17);
             this.chkTaiYong1.Name = "chkTaiYong1";
             this.chkTaiYong1.Size = new System.Drawing.Size(101, 17);
@@ -316,6 +318,18 @@
             this.chkPanchaea.Text = "Panchaea";
             this.chkPanchaea.UseVisualStyleBackColor = true;
             // 
+            // chkAutoStart
+            // 
+            this.chkAutoStart.AutoSize = true;
+            this.chkAutoStart.Checked = true;
+            this.chkAutoStart.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkAutoStart.Location = new System.Drawing.Point(3, 26);
+            this.chkAutoStart.Name = "chkAutoStart";
+            this.chkAutoStart.Size = new System.Drawing.Size(48, 17);
+            this.chkAutoStart.TabIndex = 5;
+            this.chkAutoStart.Text = "Start";
+            this.chkAutoStart.UseVisualStyleBackColor = true;
+            // 
             // DXHRSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -334,6 +348,7 @@
             this.tlpEndSplits.ResumeLayout(false);
             this.tlpEndSplits.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -344,7 +359,7 @@
         private System.Windows.Forms.GroupBox gbEndSplits;
         private System.Windows.Forms.TableLayoutPanel tlpEndSplits;
         private System.Windows.Forms.TableLayoutPanel tlpStartSplits;
-        private System.Windows.Forms.CheckBox chkAutoStart;
+        private System.Windows.Forms.CheckBox chkAutoReset;
         private System.Windows.Forms.CheckBox chkPrologue;
         private System.Windows.Forms.CheckBox chkSarif;
         private System.Windows.Forms.CheckBox chkDetroit1;
@@ -357,5 +372,6 @@
         private System.Windows.Forms.CheckBox chkHengsha2;
         private System.Windows.Forms.CheckBox chkSingapore;
         private System.Windows.Forms.CheckBox chkPanchaea;
+        private System.Windows.Forms.CheckBox chkAutoStart;
     }
 }

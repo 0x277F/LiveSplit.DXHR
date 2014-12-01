@@ -66,7 +66,7 @@ namespace LiveSplit.DXHR
 
         void gameMemory_OnFirstLevelLoading(object sender, EventArgs e)
         {
-            if (this.Settings.AutoStart)
+            if (this.Settings.AutoReset)
             {
                 _timer.Reset();
             }
