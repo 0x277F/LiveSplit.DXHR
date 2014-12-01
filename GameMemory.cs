@@ -87,7 +87,7 @@ namespace LiveSplit.DXHR
             public const string PicusBossfight = "pic_bossfight";
             public const string RIPMalik = "sha_city_constructionsite_2a";
             public const string Singapore = "sin_omega_exterior";
-            public const string SingaporeRestricted = "sin_omega_restricted_area";
+            public const string SingaporeRestricted = "sin_omega_restriced_area";
             public const string Panchaea = "pan_insertion";
             public const string PanchaeaHanger = "pan_hanger";
             public const string PanchaeaRing = "pan_ring";
