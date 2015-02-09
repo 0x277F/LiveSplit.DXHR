@@ -1,7 +1,7 @@
-﻿LiveSplit.DXHR v1.1.1
+﻿LiveSplit.DXHR v1.2.0
 =====================
 
-LiveSplit.DXHR is a [LiveSplit](http://livesplit.org/) component for Deus Ex: Human Revolution.
+LiveSplit.DXHR is a [LiveSplit](http://livesplit.org/) component for Deus Ex: Human Revolution and Deus Ex: Human Revolution Directors Cut.
 
 Features
 --------
@@ -34,5 +34,6 @@ https://github.com/drtchops/LiveSplit.DXHR/releases
 Credits
 -------
   * [DrTChops](http://twitch.tv/drtchops)
+  * [SuicideMachine](http://twitch.tv/suicidemachine)
   * Memory Addresses are from [DXHR-autosplitter](https://github.com/atennapel/Deus-Ex-Human-Revolution-autosplitter) by [Labbekak](http://www.twitch.tv/labbekak).
   * Plugin is based off [LiveSplit.Dishonored](https://github.com/fatalis/LiveSplit.Dishonored) by [Fatalis](http://twitch.tv/fatalis_).

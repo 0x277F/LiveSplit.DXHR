@@ -18,23 +18,35 @@ namespace LiveSplit.DXHR
         public bool TaiYong2 { get; set; }
         public bool Picus { get; set; }
         public bool Detroit2 { get; set; }
+        //Tongs Mission
+        public bool TongsEnd { get; set; }
+        //Normal Part
         public bool Hengsha2 { get; set; }
+        //TML missions
+        public bool TML_LeavingBoat { get; set; }
+        public bool TML_UnderwaterElevator { get; set; }
+        public bool TML_Finished { get; set; }
+        //Normal
         public bool Singapore { get; set; }
         public bool Panchaea { get; set; }
 
-        private const bool DEFAULT_AUTORESET = true;
+        private const bool DEFAULT_AUTORESET = false;
         private const bool DEFAULT_AUTOSTART = true;
-        private const bool DEFAULT_PROLOGUE = false;
-        private const bool DEFAULT_SARIF = false;
-        private const bool DEFAULT_DETROIT1 = false;
-        private const bool DEFAULT_FEMA = false;
-        private const bool DEFAULT_HENGSHA1 = false;
-        private const bool DEFAULT_TAIYONG1 = false;
-        private const bool DEFAULT_TAIYONG2 = false;
-        private const bool DEFAULT_PICUS = false;
-        private const bool DEFAULT_DETROIT2 = false;
-        private const bool DEFAULT_HENGSHA2 = false;
-        private const bool DEFAULT_SINGAPORE = false;
+        private const bool DEFAULT_PROLOGUE = true;
+        private const bool DEFAULT_SARIF = true;
+        private const bool DEFAULT_DETROIT1 = true;
+        private const bool DEFAULT_FEMA = true;
+        private const bool DEFAULT_HENGSHA1 = true;
+        private const bool DEFAULT_TAIYONG1 = true;
+        private const bool DEFAULT_TAIYONG2 = true;
+        private const bool DEFAULT_PICUS = true;
+        private const bool DEFAULT_DETROIT2 = true;
+        private const bool DEFAULT_TONGSEND = true;            //Tongs Mission
+        private const bool DEFAULT_HENGSHA2 = true;
+        private const bool DEFAULT_TML_LEAVINGBOAT = true;     //TML
+        private const bool DEFAULT_TML_UNDERWATERELEVATOR = true;
+        private const bool DEFAULT_TML_FINISHED = true;
+        private const bool DEFAULT_SINGAPORE = true;
         private const bool DEFAULT_PANCHAEA = true;
 
         public DXHRSettings()
@@ -56,6 +68,12 @@ namespace LiveSplit.DXHR
             this.chkSingapore.DataBindings.Add("Checked", this, "Singapore", false, DataSourceUpdateMode.OnPropertyChanged);
             this.chkPanchaea.DataBindings.Add("Checked", this, "Panchaea", false, DataSourceUpdateMode.OnPropertyChanged);
 
+            //Directors Cut
+            this.chkDCTongsEnd.DataBindings.Add("Checked", this, "TongsEnd", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.chkDC_TML_LeavingBoat.DataBindings.Add("Checked", this, "TML_LeavingBoat", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.chkDC_TML_UnderwaterElevator.DataBindings.Add("Checked", this, "TML_UnderwaterElevator", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.chkDC_TML_EndOfDLC.DataBindings.Add("Checked", this, "TML_Finished", false, DataSourceUpdateMode.OnPropertyChanged);
+
             // defaults
             this.AutoReset = DEFAULT_AUTORESET;
             this.AutoStart = DEFAULT_AUTOSTART;
@@ -68,7 +86,11 @@ namespace LiveSplit.DXHR
             this.TaiYong2 = DEFAULT_TAIYONG2;
             this.Picus = DEFAULT_PICUS;
             this.Detroit2 = DEFAULT_DETROIT2;
+            this.TongsEnd = DEFAULT_TONGSEND;   //TongsEnd
             this.Hengsha2 = DEFAULT_HENGSHA2;
+            this.TML_LeavingBoat = DEFAULT_TML_LEAVINGBOAT;
+            this.TML_UnderwaterElevator = DEFAULT_TML_UNDERWATERELEVATOR;
+            this.TML_Finished = DEFAULT_TML_FINISHED;
             this.Singapore = DEFAULT_SINGAPORE;
             this.Panchaea = DEFAULT_PANCHAEA;
         }
@@ -90,7 +112,11 @@ namespace LiveSplit.DXHR
             settingsNode.AppendChild(ToElement(doc, "TaiYong2", this.TaiYong2));
             settingsNode.AppendChild(ToElement(doc, "Picus", this.Picus));
             settingsNode.AppendChild(ToElement(doc, "Detroit2", this.Detroit2));
+            settingsNode.AppendChild(ToElement(doc, "TongsEnd", this.TongsEnd));
             settingsNode.AppendChild(ToElement(doc, "Hengsha2", this.Hengsha2));
+            settingsNode.AppendChild(ToElement(doc, "TML_LeavingBoat", this.TML_LeavingBoat));
+            settingsNode.AppendChild(ToElement(doc, "TML_UnderwaterElevator", this.TML_UnderwaterElevator));
+            settingsNode.AppendChild(ToElement(doc, "TML_FinishedTML", this.TML_Finished));
             settingsNode.AppendChild(ToElement(doc, "Singapore", this.Singapore));
             settingsNode.AppendChild(ToElement(doc, "Panchaea", this.Panchaea));
 
@@ -110,7 +136,11 @@ namespace LiveSplit.DXHR
             this.TaiYong2 = ParseBool(settings, "TaiYong2", DEFAULT_TAIYONG2);
             this.Picus = ParseBool(settings, "Picus", DEFAULT_PICUS);
             this.Detroit2 = ParseBool(settings, "Detroit2", DEFAULT_DETROIT2);
+            this.TongsEnd = ParseBool(settings, "TongsEnd", DEFAULT_TONGSEND);
             this.Hengsha2 = ParseBool(settings, "Hengsha2", DEFAULT_HENGSHA2);
+            this.TML_LeavingBoat = ParseBool(settings, "TML_LeavingBoat", DEFAULT_TML_LEAVINGBOAT);
+            this.TML_UnderwaterElevator = ParseBool(settings, "TML_UnderwaterElevator", DEFAULT_TML_UNDERWATERELEVATOR);
+            this.TML_Finished = ParseBool(settings, "TML_FinishedTML", DEFAULT_TML_FINISHED);
             this.Singapore = ParseBool(settings, "Singapore", DEFAULT_SINGAPORE);
             this.Panchaea = ParseBool(settings, "Panchaea", DEFAULT_PANCHAEA);
         }

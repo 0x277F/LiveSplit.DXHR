@@ -103,7 +103,11 @@ namespace LiveSplit.DXHR
                 (split == GameMemory.SplitArea.TaiYong2 && this.Settings.TaiYong2) ||
                 (split == GameMemory.SplitArea.Picus && this.Settings.Picus) ||
                 (split == GameMemory.SplitArea.Detroit2 && this.Settings.Detroit2) ||
+                (split == GameMemory.SplitArea.TongsEnd && this.Settings.TongsEnd) ||
                 (split == GameMemory.SplitArea.Hengsha2 && this.Settings.Hengsha2) ||
+                (split == GameMemory.SplitArea.DLCBoat && this.Settings.TML_LeavingBoat) ||
+                (split == GameMemory.SplitArea.DLCUnderwater && this.Settings.TML_UnderwaterElevator) ||
+                (split == GameMemory.SplitArea.DLCEnd && this.Settings.TML_Finished) ||
                 (split == GameMemory.SplitArea.Singapore && this.Settings.Singapore) ||
                 (split == GameMemory.SplitArea.Panchaea && this.Settings.Panchaea)))
             {
@@ -129,6 +133,6 @@ namespace LiveSplit.DXHR
         }
 
         public override void Update(IInvalidator invalidator, LiveSplitState state, float width, float height, LayoutMode mode) { }
-        public override void RenameComparison(string oldName, string newName) { }
+        //public override void RenameComparison(string oldName, string newName) { }
     }
 }
