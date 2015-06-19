@@ -22,10 +22,15 @@ namespace LiveSplit.DXHR
             TaiYong2,
             Picus,
             Detroit2,
+            TongsEnd,
             Hengsha2,
+            DLCBoat,
+            DLCUnderwater,
+            DLCEnd,
             Singapore,
             Panchaea,
         }
+        public bool isDirectorsCut;
 
         public event EventHandler OnFirstLevelLoading;
         public event EventHandler OnPlayerGainedControl;
@@ -41,10 +46,8 @@ namespace LiveSplit.DXHR
         private DXHRSettings _settings;
 
         private DeepPointer _isLoadingPtr;
-        // private DeepPointer _isLoadingPtr2;
         private DeepPointer _streamGroupIdPtr;
         private DeepPointer _cutsceneIdPtr;
-        // private DeepPointer _inGameTimePtr;
 
         private static class StreamGroup
         {
@@ -86,6 +89,18 @@ namespace LiveSplit.DXHR
             public const string PicusRestricted = "pic_restricted_area";
             public const string PicusBossfight = "pic_bossfight";
             public const string RIPMalik = "sha_city_constructionsite_2a";
+
+            // Directors Cut
+            public const string HengshaLowerWorkerSewer = "sha_city_sewer1b";
+            public const string TongsMission = "sha_city_lowercatacombs";
+            public const string MissingLinkOnTheBoat = "dlc_cargo_int";
+            public const string MissingLinkOnTheBoatHangar = "dlc_cargo_sas_hangar";
+            public const string MissingLinkHangar = "dlc_hangar";
+            public const string MissingLinkPrision = "dlc_prison";
+            public const string MissingLinkUnderWatErElevator = "dlc_underwater_elevator";
+            public const string MissingLinkUnderWatErBase = "dlc_restricted_area"; //probably not useful due to how it loads in the run (using Elevator -> Prison)
+            // Well it sucked
+
             public const string Singapore = "sin_omega_exterior";
             public const string SingaporeRestricted = "sin_omega_restriced_area";
             public const string Panchaea = "pan_insertion";
@@ -135,7 +150,7 @@ namespace LiveSplit.DXHR
         private enum ExpectedDllSizes
         {
             DXHRSteam = 29642752,
-            DXHRDCSteam = 1337,
+            DXHRDCSteam = 29704192,
             DXHRCracked = 0451,
         }
 
@@ -153,13 +168,6 @@ namespace LiveSplit.DXHR
         {
             _settings = componentSettings;
             splitStates = new bool[(int)SplitArea.Panchaea + 1];
-
-            _isLoadingPtr = new DeepPointer(0x1876708); // == 1 if a loadscreen is happening
-            // _isLoadingPtr2 = new DeepPointer(0x1855800); // == 1 if a loadscreen is happening
-            // _streamGroupIdPtr = new DeepPointer(0x1838D30); // ID of the current stream group
-            _streamGroupIdPtr = new DeepPointer(0x1857924); // ID of the current stream group
-            _cutsceneIdPtr = new DeepPointer(0x1ACE2C0); // ID of the current cutscene
-            // _inGameTimePtr = new DeepPointer(0x9E7744); // In-game time in seconds
 
             resetSplitStates();
 
@@ -201,7 +209,7 @@ namespace LiveSplit.DXHR
             {
                 try
                 {
-                    Debug.WriteLine("[NoLoads] Waiting for dxhr.exe...");
+                    Debug.WriteLine("[NoLoads] Waiting for dxhr.exe or dxhrdc.exe...");
 
                     Process game;
                     while ((game = GetGameProcess()) == null)
@@ -213,7 +221,7 @@ namespace LiveSplit.DXHR
                         }
                     }
 
-                    Debug.WriteLine("[NoLoads] Got dxhr.exe!");
+                    Debug.WriteLine("[NoLoads] Got games process!");
 
                     uint frameCounter = 0;
 
@@ -272,9 +280,28 @@ namespace LiveSplit.DXHR
                             {
                                 Split(SplitArea.Detroit2, frameCounter);
                             }
-                            else if (prevStreamGroupId == StreamGroup.HengshaPort && streamGroupId == StreamGroup.Singapore)
+                            //Tongs mission (DC only)
+                            else if (prevStreamGroupId == StreamGroup.TongsMission && streamGroupId == StreamGroup.HengshaLowerWorkerSewer && isDirectorsCut)
+                            {
+                                Split(SplitArea.TongsEnd, frameCounter);
+                            }
+                            //Living Hengsha with 2 varients - probably could be simpler, but whatever
+                            else if ((prevStreamGroupId == StreamGroup.HengshaPort && streamGroupId == StreamGroup.MissingLinkOnTheBoat && isDirectorsCut) || (prevStreamGroupId == StreamGroup.HengshaPort && streamGroupId == StreamGroup.Singapore && !isDirectorsCut))
                             {
                                 Split(SplitArea.Hengsha2, frameCounter);
+                            }
+                            //TheMissingLink (DC only)
+                            else if (prevStreamGroupId == StreamGroup.MissingLinkOnTheBoatHangar && streamGroupId == StreamGroup.MissingLinkHangar && isDirectorsCut)
+                            {
+                                Split(SplitArea.DLCBoat, frameCounter);
+                            }
+                            else if (prevStreamGroupId == StreamGroup.MissingLinkUnderWatErElevator && streamGroupId == StreamGroup.MissingLinkPrision && isDirectorsCut)
+                            {
+                                Split(SplitArea.DLCUnderwater, frameCounter);
+                            }
+                            else if (prevStreamGroupId == StreamGroup.MissingLinkHangar && streamGroupId == StreamGroup.Singapore && isDirectorsCut)
+                            {
+                                Split(SplitArea.DLCEnd, frameCounter);
                             }
                             else if (prevStreamGroupId == StreamGroup.SingaporeRestricted && streamGroupId == StreamGroup.Panchaea)
                             {
@@ -389,17 +416,30 @@ namespace LiveSplit.DXHR
 
         Process GetGameProcess()
         {
-            Process game = Process.GetProcesses().FirstOrDefault(p => p.ProcessName.ToLower() == "dxhr"
-                && !p.HasExited && !_ignorePIDs.Contains(p.Id));
+            Process game = Process.GetProcesses().FirstOrDefault(p => (p.ProcessName.ToLower() == "dxhr" || p.ProcessName.ToLower() == "dxhrdc") && !p.HasExited && !_ignorePIDs.Contains(p.Id));
             if (game == null)
             {
                 return null;
             }
+            if(game.ProcessName == "dxhr") //if the game is DXHR
+            {
+                isDirectorsCut = false;
+                _isLoadingPtr = new DeepPointer(0x1876708); // == 1 if a loadscreen is happening
+                _streamGroupIdPtr = new DeepPointer(0x1857924); // ID of the current stream group (DXHR)
+                _cutsceneIdPtr = new DeepPointer(0x1ACE2C0); // ID of the current cutscene
+            }
+            else
+            {
+                isDirectorsCut = true;
+                _isLoadingPtr = new DeepPointer(0x1879DA0); // == 1 if a loadscreen is happening
+                _streamGroupIdPtr = new DeepPointer(0x187BFDC); //ID of the current stream group (DXHRDC)
+                _cutsceneIdPtr = new DeepPointer(0x1B07F50); // ID of the current cutscene
+            }
 
-            if (game.MainModule.ModuleMemorySize != (int)ExpectedDllSizes.DXHRSteam && game.MainModule.ModuleMemorySize != (int)ExpectedDllSizes.DXHRCracked)
+            if (game.MainModule.ModuleMemorySize != (int)ExpectedDllSizes.DXHRSteam && game.MainModule.ModuleMemorySize != (int)ExpectedDllSizes.DXHRDCSteam)
             {
                 _ignorePIDs.Add(game.Id);
-                _uiThread.Send(d => MessageBox.Show("Unexpected game version. DXHR 1.4.651.0 is required.", "LiveSplit.DXHR",
+                _uiThread.Send(d => MessageBox.Show("Unexpected game version. DXHR 1.4.651.0 or DXHRDC 2.0.0.0 is required.", "LiveSplit.DXHR",
                     MessageBoxButtons.OK, MessageBoxIcon.Error), null);
                 return null;
             }
