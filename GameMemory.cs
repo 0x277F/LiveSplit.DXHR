@@ -393,6 +393,15 @@ namespace LiveSplit.DXHR
                             return;
                         }
                     }
+
+                    // pause game timer on exit or crash
+                    _uiThread.Post(d =>
+                    {
+                        if (this.OnLoadStarted != null)
+                        {
+                            this.OnLoadStarted(this, EventArgs.Empty);
+                        }
+                    }, null);
                 }
                 catch (Exception ex)
                 {
