@@ -1,4 +1,4 @@
-﻿LiveSplit.DXHR v1.2.0
+﻿LiveSplit.DXHR v1.4.0
 =====================
 
 LiveSplit.DXHR is a [LiveSplit](http://livesplit.org/) component for Deus Ex: Human Revolution and Deus Ex: Human Revolution Directors Cut.

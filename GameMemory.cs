@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LiveSplit.ComponentUtil;
 
 namespace LiveSplit.DXHR
 {
@@ -430,22 +431,23 @@ namespace LiveSplit.DXHR
             {
                 return null;
             }
-            if(game.ProcessName == "dxhr") //if the game is DXHR
+
+            if (game.ProcessName == "dxhr")  // DXHR
             {
                 isDirectorsCut = false;
-                _isLoadingPtr = new DeepPointer(0x1876708); // == 1 if a loadscreen is happening
-                _streamGroupIdPtr = new DeepPointer(0x1857924); // ID of the current stream group (DXHR)
-                _cutsceneIdPtr = new DeepPointer(0x1ACE2C0); // ID of the current cutscene
+                _isLoadingPtr = new DeepPointer(0x1876708);  // == 1 if a loadscreen is happening
+                _streamGroupIdPtr = new DeepPointer(0x1857924);  // ID of the current stream group (DXHR)
+                _cutsceneIdPtr = new DeepPointer(0x1ACE2C0);  // ID of the current cutscene
             }
-            else
+            else  // DXHRDC
             {
                 isDirectorsCut = true;
-                _isLoadingPtr = new DeepPointer(0x1879DA0); // == 1 if a loadscreen is happening
-                _streamGroupIdPtr = new DeepPointer(0x187BFDC); //ID of the current stream group (DXHRDC)
-                _cutsceneIdPtr = new DeepPointer(0x1B07F50); // ID of the current cutscene
+                _isLoadingPtr = new DeepPointer(0x1879DA0);  // == 1 if a loadscreen is happening
+                _streamGroupIdPtr = new DeepPointer(0x187BFDC);  //ID of the current stream group (DXHRDC)
+                _cutsceneIdPtr = new DeepPointer(0x1B07F50);  // ID of the current cutscene
             }
 
-            if (game.MainModule.ModuleMemorySize != (int)ExpectedDllSizes.DXHRSteam && game.MainModule.ModuleMemorySize != (int)ExpectedDllSizes.DXHRDCSteam)
+            if (game.MainModuleWow64Safe().ModuleMemorySize != (int)ExpectedDllSizes.DXHRSteam && game.MainModuleWow64Safe().ModuleMemorySize != (int)ExpectedDllSizes.DXHRDCSteam)
             {
                 _ignorePIDs.Add(game.Id);
                 _uiThread.Send(d => MessageBox.Show("Unexpected game version. DXHR 1.4.651.0 or DXHRDC 2.0.0.0 is required.", "LiveSplit.DXHR",
