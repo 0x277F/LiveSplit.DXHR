@@ -51,15 +51,9 @@ namespace LiveSplit.DXHR
         {
           "0451",
           "1337",
-          "9212",
           "5962",
-          "7984",
           "6631",
-          "4865",
-          "4713",
-          "0703",
           "6906",
-          "0068",
           "8021",
           "4589",
           "3295",
@@ -68,7 +62,6 @@ namespace LiveSplit.DXHR
         public int KeyCodeIndex = 0;
 
         private DeepPointer _isLoadingPtr;
-        private DeepPointer _isKeypadPtr;
         private DeepPointer _monOpenPtr;
         private DeepPointer _streamGroupIdPtr;
         private DeepPointer _cutsceneIdPtr;
@@ -254,7 +247,6 @@ namespace LiveSplit.DXHR
                     int prevCutsceneId = 0;
 
                     bool prevMonOpen = false;
-                    bool prevKeypad = false; // This sets to true when the keypad is open, and false when closed, unlike the pointer it wraps.
 
                     bool loadingStarted = false;
 
@@ -271,12 +263,8 @@ namespace LiveSplit.DXHR
                             bool isMonOpen;
                             _monOpenPtr.Deref(game, out isMonOpen);
 
-                            bool isKeypadOpening;
-                            _isKeypadPtr.Deref(game, out isKeypadOpening);
-
-                            if (prevKeypad && prevMonOpen && !isMonOpen)
+                            if (prevMonOpen && !isMonOpen)
                             {
-                                prevKeypad = false;
                                 KeyCodeIndex++;
                                 if (this.OnKeyPadClose != null)
                                 {
@@ -284,10 +272,6 @@ namespace LiveSplit.DXHR
                                 }
                             }
                             prevMonOpen = isMonOpen;
-                            if (isKeypadOpening)
-                            {
-                                prevKeypad = true;
-                            }
                         }
 
                       int cutsceneId;
@@ -493,8 +477,7 @@ namespace LiveSplit.DXHR
             {
                 isDirectorsCut = true;
                 _isLoadingPtr = new DeepPointer(0x1879DA0);  // == 1 if a loadscreen is happening
-                _isKeypadPtr = new DeepPointer(0x122E1818); // Toggles to 1 while a keypad is being opened. 1
-                _monOpenPtr = new DeepPointer(0x149273C); // == 1 if a monitor is open. Includes keypads, computers, etc.
+                _monOpenPtr = new DeepPointer(0xA1273C); // == 1 if a monitor is open. Includes keypads, computers, etc.
                 _streamGroupIdPtr = new DeepPointer(0x187BFDC);  //ID of the current stream group (DXHRDC)
                 _cutsceneIdPtr = new DeepPointer(0x1B07F50);  // ID of the current cutscene
             }

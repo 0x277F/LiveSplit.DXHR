@@ -82,7 +82,7 @@ namespace LiveSplit.DXHR
           {
               _timer.CurrentState.Run[_timer.CurrentState.CurrentSplitIndex - 1].Name = _currentSplitName;
               _currentSplitName = _timer.CurrentState.CurrentSplit.Name;
-              _timer.CurrentState.Run.HasChanged = true;
+              gameMemory_OnKeyPadClose(sender, e);
           }
         }
 
@@ -100,7 +100,6 @@ namespace LiveSplit.DXHR
             {
                 _timer.CurrentState.CurrentSplit.Name = _currentSplitName + " (" +
                                                       _gameMemory.KeyCodes[_gameMemory.KeyCodeIndex] + ")";
-                _timer.CurrentState.Run.HasChanged = true;
             }
         }
 
