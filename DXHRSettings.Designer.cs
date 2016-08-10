@@ -46,6 +46,7 @@
             this.tlpStartSplits = new System.Windows.Forms.TableLayoutPanel();
             this.chkAutoStart = new System.Windows.Forms.CheckBox();
             this.chkAutoReset = new System.Windows.Forms.CheckBox();
+            this.chkCodes = new System.Windows.Forms.CheckBox();
             this.tlpMain = new System.Windows.Forms.TableLayoutPanel();
             this.gbDCEndSplits = new System.Windows.Forms.GroupBox();
             this.tlpDCEndSplits = new System.Windows.Forms.TableLayoutPanel();
@@ -318,6 +319,18 @@
             this.chkAutoReset.TabIndex = 4;
             this.chkAutoReset.Text = "Reset";
             this.chkAutoReset.UseVisualStyleBackColor = true;
+            //
+            // chkCodes
+            //
+            this.chkCodes.AutoSize = true;
+            this.chkCodes.Checked = false;
+            this.chkCodes.CheckState = System.Windows.Forms.CheckState.Unchecked;
+            this.chkCodes.Location = new System.Drawing.Point(3, 50);
+            this.chkCodes.Name = "chkCodes";
+            this.chkCodes.Size = new System.Drawing.Size(54, 17);
+            this.chkCodes.TabIndex = 4;
+            this.chkCodes.Text = "Show Key Codes";
+            this.chkCodes.UseVisualStyleBackColor = true;
             // 
             // tlpMain
             // 
@@ -463,6 +476,7 @@
         private System.Windows.Forms.TableLayoutPanel tlpStartSplits;
         private System.Windows.Forms.CheckBox chkAutoStart;
         private System.Windows.Forms.CheckBox chkAutoReset;
+        private System.Windows.Forms.CheckBox chkCodes;
         private System.Windows.Forms.TableLayoutPanel tlpMain;
         private System.Windows.Forms.GroupBox gbDCEndSplits;
         private System.Windows.Forms.TableLayoutPanel tlpDCEndSplits;

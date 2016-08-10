@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Reflection;
 using System.Windows.Forms;
 using System.Xml;
@@ -9,6 +10,7 @@ namespace LiveSplit.DXHR
     {
         public bool AutoReset { get; set; }
         public bool AutoStart { get; set; }
+        public bool ShowCodes { get; set; }
         public bool Prologue { get; set; }
         public bool Sarif { get; set; }
         public bool Detroit1 { get; set; }
@@ -32,6 +34,7 @@ namespace LiveSplit.DXHR
 
         private const bool DEFAULT_AUTORESET = false;
         private const bool DEFAULT_AUTOSTART = true;
+        private const bool DEFAULT_SHOWCODES = true;
         private const bool DEFAULT_PROLOGUE = true;
         private const bool DEFAULT_SARIF = true;
         private const bool DEFAULT_DETROIT1 = true;
@@ -55,6 +58,7 @@ namespace LiveSplit.DXHR
 
             this.chkAutoReset.DataBindings.Add("Checked", this, "AutoReset", false, DataSourceUpdateMode.OnPropertyChanged);
             this.chkAutoStart.DataBindings.Add("Checked", this, "AutoStart", false, DataSourceUpdateMode.OnPropertyChanged);
+          this.chkCodes.DataBindings.Add("Checked", this, "ShowCodes", false, DataSourceUpdateMode.OnPropertyChanged);
             this.chkPrologue.DataBindings.Add("Checked", this, "Prologue", false, DataSourceUpdateMode.OnPropertyChanged);
             this.chkSarif.DataBindings.Add("Checked", this, "Sarif", false, DataSourceUpdateMode.OnPropertyChanged);
             this.chkFEMA.DataBindings.Add("Checked", this, "FEMA", false, DataSourceUpdateMode.OnPropertyChanged);
@@ -77,6 +81,7 @@ namespace LiveSplit.DXHR
             // defaults
             this.AutoReset = DEFAULT_AUTORESET;
             this.AutoStart = DEFAULT_AUTOSTART;
+            this.ShowCodes = DEFAULT_SHOWCODES;
             this.Prologue = DEFAULT_PROLOGUE;
             this.Sarif = DEFAULT_SARIF;
             this.FEMA = DEFAULT_FEMA;
@@ -103,6 +108,7 @@ namespace LiveSplit.DXHR
 
             settingsNode.AppendChild(ToElement(doc, "AutoReset", this.AutoReset));
             settingsNode.AppendChild(ToElement(doc, "AutoStart", this.AutoStart));
+            settingsNode.AppendChild(ToElement(doc, "ShowCodes", this.ShowCodes));
             settingsNode.AppendChild(ToElement(doc, "Prologue", this.Prologue));
             settingsNode.AppendChild(ToElement(doc, "Sarif", this.Sarif));
             settingsNode.AppendChild(ToElement(doc, "Detroit1", this.Detroit1));
@@ -127,6 +133,7 @@ namespace LiveSplit.DXHR
         {
             this.AutoReset = ParseBool(settings, "AutoReset", DEFAULT_AUTORESET);
             this.AutoStart = ParseBool(settings, "AutoStart", DEFAULT_AUTOSTART);
+            this.ShowCodes = ParseBool(settings, "ShowCodes", DEFAULT_SHOWCODES);
             this.Prologue = ParseBool(settings, "Prologue", DEFAULT_PROLOGUE);
             this.Sarif = ParseBool(settings, "Sarif", DEFAULT_SARIF);
             this.Detroit1 = ParseBool(settings, "Detroit1", DEFAULT_DETROIT1);

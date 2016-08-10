@@ -26,6 +26,7 @@ namespace LiveSplit.DXHR
         private TimerModel _timer;
         private GameMemory _gameMemory;
         private LiveSplitState _state;
+        private String _currentSplitName;
 
         public DXHRComponent(LiveSplitState state, bool isLayoutComponent)
         {
@@ -36,6 +37,7 @@ namespace LiveSplit.DXHR
 
             _timer = new TimerModel { CurrentState = state };
             _timer.CurrentState.OnStart += timer_OnStart;
+            _timer.CurrentState.OnSplit += timer_OnSplit;
 
             _gameMemory = new GameMemory(this.Settings);
             _gameMemory.OnFirstLevelLoading += gameMemory_OnFirstLevelLoading;
@@ -43,6 +45,7 @@ namespace LiveSplit.DXHR
             _gameMemory.OnLoadStarted += gameMemory_OnLoadStarted;
             _gameMemory.OnLoadFinished += gameMemory_OnLoadFinished;
             _gameMemory.OnSplitCompleted += gameMemory_OnSplitCompleted;
+            _gameMemory.OnKeyPadClose += gameMemory_OnKeyPadClose;
             state.OnStart += State_OnStart;
             _gameMemory.StartMonitoring();
         }
@@ -69,6 +72,18 @@ namespace LiveSplit.DXHR
         void timer_OnStart(object sender, EventArgs e)
         {
             _timer.InitializeGameTime();
+            _currentSplitName = _timer.CurrentState.CurrentSplit.Name;
+            gameMemory_OnKeyPadClose(sender, e);
+        }
+
+        void timer_OnSplit(object sender, EventArgs e)
+        {
+          if (this.Settings.ShowCodes)
+          {
+              _timer.CurrentState.Run[_timer.CurrentState.CurrentSplitIndex - 1].Name = _currentSplitName;
+              _currentSplitName = _timer.CurrentState.CurrentSplit.Name;
+              _timer.CurrentState.Run.HasChanged = true;
+          }
         }
 
     void gameMemory_OnFirstLevelLoading(object sender, EventArgs e)
@@ -76,6 +91,16 @@ namespace LiveSplit.DXHR
             if (this.Settings.AutoReset)
             {
                 _timer.Reset();
+            }
+        }
+
+        void gameMemory_OnKeyPadClose(object sender, EventArgs e)
+        {
+            if (this.Settings.ShowCodes)
+            {
+                _timer.CurrentState.CurrentSplit.Name = _currentSplitName + " (" +
+                                                      _gameMemory.KeyCodes[_gameMemory.KeyCodeIndex] + ")";
+                _timer.CurrentState.Run.HasChanged = true;
             }
         }
 
